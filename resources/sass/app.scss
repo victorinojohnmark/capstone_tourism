@@ -2,11 +2,6 @@
 @import url('https://fonts.bunny.net/css?family=Inter');
 @import url('https://fonts.bunny.net/css?family=Bebas-Neue');
 
-// Tailwind CSS
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 // Local Font
 @font-face {
     font-family: 'Gotcha Standup';
@@ -17,3 +12,4 @@
          url('/font/gotcha_standup/Gotcha-Standup.ttf') format('truetype');
     
 }
+

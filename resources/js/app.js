@@ -1,13 +1,14 @@
 import '../css/app.css'
 
 import './bootstrap';
+import 'flowbite';
 import { createApp } from 'vue';
 
 const app = createApp({});
 
 // Import Components
-import ExampleComponent from './components/ExampleComponent.vue';
+import HeaderComponent from './components/HeaderComponent.vue'
 
 // Register Components
-app.component('example-component', ExampleComponent);
+app.component('header-component', HeaderComponent);
 app.mount('#app');
