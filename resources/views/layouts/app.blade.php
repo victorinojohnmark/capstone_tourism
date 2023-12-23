@@ -9,6 +9,7 @@
 
     <title>{{ env('APP_NAME', 'Laravel') }}</title>
 
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
 
