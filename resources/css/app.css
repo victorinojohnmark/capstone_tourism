@@ -3,6 +3,17 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Local Font */
+@font-face {
+    font-family: 'Gotcha Standup';
+    src: url('/font/gotcha_standup/Gotcha-Standup.eot');
+    src: url('/font/gotcha_standup/Gotcha-Standup.eot?#iefix') format('embedded-opentype'),
+         url('/font/gotcha_standup/Gotcha-Standup.woff2') format('woff2'),
+         url('/font/gotcha_standup/Gotcha-Standup.woff') format('woff'),
+         url('/font/gotcha_standup/Gotcha-Standup.ttf') format('truetype');
+    
+}
+
 body {
     font-family: 'Inter', sans-serif;
 }
