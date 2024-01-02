@@ -5,7 +5,7 @@
     <div class="container mx-auto pt-40">
         <div id="bannerText" class="pl-5 sm:pl-10 md:pl-20">
             <h3 class="md:leading-0 font-bold text-5xl sm:text-7xl text-white font-['Inter'] leading-[50px] ml-48">Experience</h3> 
-            <h3 class="font-['Gotcha_Standup'] font-normal text-[160px] md:!text-[275px] text-yellow-300 -mt-14 md:-mt-24 mr-3 -rotate-3">Ternate</h3>
+            <h3 class="font-['Gotcha_Standup'] font-normal text-[160px] md:!text-[275px] text-yellow-300 -mt-14 md:-mt-24 mr-3 -rotate-3 drop-shadow-xl">Ternate</h3>
             <h3 class="leading-0 font-bold text-3xl sm:text-5xl text-white font-['Inter'] leading-[50px] -mt-14 md:-mt-24 ml-24">Unveiling Nature's Treasures</h3>
         </div>
     </div>
@@ -61,8 +61,8 @@
 
         window.addEventListener('scroll', () => {
             const scrollY = window.scrollY || window.pageYOffset;
-            const manTranslateY = scrollY / 3;
-            const landscapeTranslateY = scrollY / 6;
+            const manTranslateY = scrollY / 2;
+            const landscapeTranslateY = scrollY / 5;
             man.style.transform = `translateY(${manTranslateY}px)`;
             landscape.style.transform = `translateY(${landscapeTranslateY}px)`;
         });
