@@ -14,6 +14,25 @@
     
 }
 
+html {
+    scroll-behavior: smooth;
+  }
+
 body {
     font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+}
+
+.beachSwiper .swiper-button-prev {
+    display: none;
+}
+
+.beachSwiper .swiper-button-next::after {
+    background: #15803c38;
+    padding: 15px 20px;
+    margin-right: 15px;
+    border-radius: 999px;
+    font-size: 16px !important;
+    font-weight: 600;
+    color: white;
 }
