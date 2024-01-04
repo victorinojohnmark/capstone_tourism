@@ -15,6 +15,9 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <script>
+        window.csrfToken = @json(csrf_token());
+    </script>
 </head>
 <body>
     <div id="app">
@@ -38,5 +41,15 @@
             behavior: 'smooth' 
         });
     </script>
+
+    @auth
+    <script>
+        window.authUser = @json(auth()->user());
+    </script>
+    @else
+    <script>
+        window.authUser = null;
+    </script>
+    @endauth
 </body>
 </html>

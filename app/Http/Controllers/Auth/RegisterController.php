@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class RegisterController extends Controller
 {
@@ -49,10 +50,16 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        $accountTypes = ['Tourist', 'Vendor'];
+        $businessType = ['Beach Resort', 'Restaurant', 'Products and Delicacies'];
+
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'type' => ['required', Rule::in($accountTypes)],
+            'business_type' => ['required', Rule::in($businessType)],
+            'business_name' => ['required', 'max:255']
         ]);
     }
 
@@ -68,6 +75,9 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'type' => $data['type'],
+            'business_type' => $data['business_type'],
+            'business_name' => $data['business_name'],
         ]);
     }
 }
