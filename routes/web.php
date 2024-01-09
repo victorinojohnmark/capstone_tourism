@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\BusinessInformationController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,4 +23,11 @@ Auth::routes(['verify' => true]);
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    Route::prefix('user')->group(function () {
+        Route::get('/about-us', [BusinessInformationController::class, 'show'])->name('user.business.show');
+        Route::post('/about-us', [BusinessInformationController::class, 'store'])->name('user.business.store');
+        Route::post('/about-us/{user}', [BusinessInformationController::class, 'update'])->name('user.business.update');
+
+    });
 });

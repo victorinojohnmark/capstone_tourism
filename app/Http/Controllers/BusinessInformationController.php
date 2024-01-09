@@ -10,12 +10,7 @@ class BusinessInformationController extends Controller
     
     public function index()
     {
-        //
-    }
-
-    public function create()
-    {
-        //
+       
     }
 
     public function store(Request $request)
@@ -25,20 +20,12 @@ class BusinessInformationController extends Controller
 
     public function show(BusinessInformation $businessInformation)
     {
-        //
-    }
-
-    public function edit(BusinessInformation $businessInformation)
-    {
-        //
+        return view('user.business-information.business-information-view', [
+            'information' => auth()->user()->information
+        ]);
     }
 
     public function update(Request $request, BusinessInformation $businessInformation)
-    {
-        //
-    }
-
-    public function destroy(BusinessInformation $businessInformation)
     {
         //
     }
