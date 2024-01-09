@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('business_information', function (Blueprint $table) {
             $table->id();
-            $table->text('about_us_content');
+            $table->longText('about_us_content');
             $table->string('contact_no', 255);
             $table->string('contact_person', 255);
             $table->string('email_address', 255)->nullable();

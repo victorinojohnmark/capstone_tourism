@@ -16,18 +16,38 @@
             
         </div>
     </div>
-    @if (session('status'))
-        <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
-            {{ session('status') }}
-        </div>
-    @endif
+    @include('layouts.message')
 
     @if ($information)
+        <div class="flex flex-col md:flex-row">
+            <div class="aboutUsContent w-full md:w-2/3 p-3">
+                {!! $information->about_us_content !!}
+            </div>
+            <div class="aboutUsContact w-full md:w-1/3 p-3">
+                
+            </div>
+        </div>
         
     @else
-    <p>{{ 'No Information set yet' }}</p>
+        <p>{{ 'No Information set yet' }}</p>
     @endif
     
 
 </section>
+@endsection
+
+@section('css')
+    <link rel="stylesheet" href="/css/custom.css">
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('vendor/tinymce/js/tinymce/tinymce.min.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            tinymce.init({
+                selector: '.tinymce-editor'
+            });
+        });
+    </script>
 @endsection

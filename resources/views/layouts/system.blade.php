@@ -54,7 +54,7 @@
                     <div class="flex items-center lg:order-2">
 
                         <!-- Notifications -->
-                        <button type="button" data-dropdown-toggle="notification-dropdown"
+                        <button type="button" 
                             class="p-2 mr-1 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600">
                             <span class="sr-only">View notifications</span>
                             <!-- Bell icon -->
@@ -75,7 +75,7 @@
                                 alt="user photo" />
                         </button>
                         <!-- Dropdown menu -->
-                        <div class="hidden z-50 my-4 w-56 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600 rounded-xl"
+                        <div class="hidden z-50 my-4 w-56 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600 md:rounded-xl"
                             id="dropdown">
                             <div class="py-3 px-4">
                                 <span class="block text-sm font-semibold text-gray-900 dark:text-white">Neil Sims</span>

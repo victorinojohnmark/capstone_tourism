@@ -27,7 +27,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('user')->group(function () {
         Route::get('/about-us', [BusinessInformationController::class, 'show'])->name('user.business.show');
         Route::post('/about-us', [BusinessInformationController::class, 'store'])->name('user.business.store');
-        Route::post('/about-us/{user}', [BusinessInformationController::class, 'update'])->name('user.business.update');
+        Route::post('/about-us/{information}', [BusinessInformationController::class, 'update'])->name('user.business.update');
 
     });
 });
