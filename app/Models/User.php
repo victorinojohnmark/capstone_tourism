@@ -44,4 +44,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Gallery::class);
     }
+
+    public function getNameAttribute()
+    {
+        return $this->attributes['business_name'] ?? $this->attributes['name'];
+    }
 }
