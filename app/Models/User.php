@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 use App\Models\BusinessInformation;
+use App\Models\Gallery;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -37,5 +38,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function information()
     {
         return $this->hasOne(BusinessInformation::class)->latest();
+    }
+
+    public function galleries()
+    {
+        return $this->hasMany(Gallery::class);
     }
 }

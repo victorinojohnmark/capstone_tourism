@@ -18,11 +18,16 @@ class BusinessInformationController extends Controller
 
     public function store(StoreInformationRequest $request)
     {
-        array_push($request->validated, [
-            'user_id' => auth()->user()->id
-        ]);
+        // array_push($request->validated(), [
+        //     'user_id' => auth()->user()->id
+        // ]);
 
-        $information = BusinessInformation::create($request->validated());
+        $data = $request->validated();
+        $data['user_id'] = auth()->user()->id;
+
+
+        // dd($data);
+        $information = BusinessInformation::create($data);
 
         return redirect()->route('user.business.show')->with('success', 'About us content created successfully.');
     }

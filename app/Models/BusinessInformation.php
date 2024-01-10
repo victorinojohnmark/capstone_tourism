@@ -9,5 +9,5 @@ class BusinessInformation extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['about_us_content', 'contact_no', 'contact_person', 'email_address', 'address'];
+    protected $fillable = ['user_id', 'about_us_content', 'contact_no', 'contact_person', 'email_address', 'address'];
 }

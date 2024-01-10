@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\BusinessInformationController;
+use App\Http\Controllers\GalleryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/about-us', [BusinessInformationController::class, 'show'])->name('user.business.show');
         Route::post('/about-us', [BusinessInformationController::class, 'store'])->name('user.business.store');
         Route::post('/about-us/{information}', [BusinessInformationController::class, 'update'])->name('user.business.update');
+
+        Route::get('/galleries', [GalleryController::class, 'index'])->name('user.gallery.index');
+        Route::post('/galleries', [GalleryController::class, 'store'])->name('user.gallery.store');
+        Route::delete('/galleries{gallery}', [GalleryController::class, 'destroy'])->name('user.gallery.destroy');
 
     });
 });
