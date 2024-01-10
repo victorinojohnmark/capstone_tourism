@@ -47,6 +47,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function getNameAttribute()
     {
-        return $this->business_name ?? $this->name;
+        return $this->attributes['business_name'] ?? $this->attributes['name'];
     }
 }
