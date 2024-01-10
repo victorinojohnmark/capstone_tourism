@@ -37,5 +37,4 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     });
 
-    Route::get('messenger/search', [MessengerController::class, 'search'])->
 });

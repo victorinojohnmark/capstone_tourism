@@ -1,6 +1,6 @@
 <?php
 
-namespace Chatify\Http\Controllers;
+namespace App\Http\Controllers\vendor\Chatify;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -332,9 +332,8 @@ class MessagesController extends Controller
         $getRecords = null;
         $input = trim(filter_var($request['input']));
         $records = User::where('id','!=',Auth::user()->id)
-                    ->where('name', 'LIKE', "%{$input}%")
+                    ->where('business_name', 'LIKE', "%{$input}%")
                     ->where('type', '=','Vendor')
-                    ->where('type', '=','Tourist')
                     ->paginate($request->per_page ?? $this->perPage);
         foreach ($records->items() as $record) {
             $getRecords .= view('Chatify::layouts.listItem', [

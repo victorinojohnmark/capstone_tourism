@@ -16,7 +16,7 @@ class AdminSeeder extends Seeder
     {
         User::create([
             'name' => 'Admin',
-            'type' => null,
+            'type' => 'Admin',
             'business_type' => null,
             'business_name' => null,
             'email' => 'admin@admin.com',
