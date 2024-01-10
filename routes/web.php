@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\BusinessInformationController;
 use App\Http\Controllers\GalleryController;
+use Chatify\Http\Controllers\Api\MessengerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,4 +36,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::delete('/galleries{gallery}', [GalleryController::class, 'destroy'])->name('user.gallery.destroy');
 
     });
+
+    Route::get('messenger/search', [MessengerController::class, 'search'])->
 });
