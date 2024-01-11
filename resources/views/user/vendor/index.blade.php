@@ -9,10 +9,10 @@
             <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">{{ $user->name }}</h2>
             <p class="mb-4">{!! $user->information?->about_us_content !!}</p>
         </div>
-        <div class="w-full md:1/3 grid grid-cols-2 gap-4 mt-8">
-            <img class="w-full rounded-lg" src="{{ $user->default_image }}" alt="office content 1">
+        <div class="w-full md:1/3 grid {{ count($user->galleries) > 1 ? 'grid-cols-2' : '' }} {{ ($loop->index + 1) % 2 == 0 ? 'justify-end': ''}} gap-4 mt-8">
+            <img class="w-full rounded-lg object-cover object-center max-w-[300px] h-[300px] md:h-[400px]" src="/storage/gallery/{{ $user->default_image->filename }}" alt="office content 1">
             @if (count($user->galleries) > 1)
-            <img class="mt-4 w-full lg:mt-10 rounded-lg" src="/storage/gallery/{{ $user->galleries[1] }}" alt="office content 2">
+            <img class="mt-4 w-full lg:mt-10 rounded-lg object-cover object-center max-w-[300px] h-[300px] md:h-[400px]" src="/storage/gallery/{{ $user->galleries->where('is_default', false)->first()->filename }}" alt="office content 2">
             @endif
             
         </div>
