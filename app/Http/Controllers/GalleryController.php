@@ -24,7 +24,13 @@ class GalleryController extends Controller
 
         $data['user_id'] = auth()->user()->id;
 
+        if(!count(auth()->user()->galleries)) {
+            $data['is_default'] = true;
+        }
+
         $gallery = Gallery::create($data);
+
+        
 
         if($request->hasFile('file_input')) {
             $file = $request->file('file_input');

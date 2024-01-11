@@ -2,9 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\BusinessInformationController;
 use App\Http\Controllers\GalleryController;
-use Chatify\Http\Controllers\Api\MessengerController;
+use App\Http\Controllers\VendorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +18,11 @@ use Chatify\Http\Controllers\Api\MessengerController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
+Route::get('/vendors', [VendorController::class, 'index'])->name('vendor-list');
+// Route::get('/about-ternate', function() {
+//     return view('about-ternate');
+// })->name('about-ternate');
 
 Auth::routes(['verify' => true]);
 

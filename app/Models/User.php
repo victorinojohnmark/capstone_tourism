@@ -34,6 +34,18 @@ class User extends Authenticatable implements MustVerifyEmail
         'password' => 'hashed',
     ];
 
+    protected $appends = ['default_image'];
+
+    public function scopeVendor($query)
+    {
+        $query->where('type', 'Vendor');
+    }
+
+    public function scopeVerified($query)
+    {
+        $query->whereNotNull('email_verified_at');
+    }
+
 
     public function information()
     {
@@ -52,6 +64,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function getDefaultImageAttribute()
     {
-        return $this->galleries->where('is_default', true);
+        return $this->galleries->where('is_default', true)->first();
     }
 }

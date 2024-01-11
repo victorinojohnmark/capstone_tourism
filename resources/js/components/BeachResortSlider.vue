@@ -12,12 +12,12 @@
       :grabCursor="true"
       class="beachSwiper"
     >
-        <SwiperSlide v-for="(item, index) in [1,2,3,4,5,6,7,8,9]" class=" rounded-lg overflow-hidden">
-            <img src="https://placehold.co/300x400" class="object-cover" alt="">
+        <SwiperSlide v-for="(item, index) in beaches" class="!rounded-lg !overflow-hidden">
+            <img :src="item.default_image ? `/storage/gallery/${item.default_image.filename}`: 'https://placehold.co/300x400'" class="object-cover object-center w-full max-w-[300px] h-[300px] md:h-[400px]" alt="">
         </SwiperSlide>
         <!-- <div class="swiper-button-next inline-flex p-5 px-[22px] rounded-full bg-yellow-300 hover:bg-yellow-400 transition text-white !text-xs"></div> -->
     </Swiper>
-  </template>
+</template>
   
 <script setup>
 import { ref, onBeforeMount } from 'vue';
@@ -30,6 +30,12 @@ import { Navigation, Mousewheel, Pagination, Keyboard } from 'swiper/modules';
 
 const modules = [Navigation, Mousewheel, Pagination, Keyboard];
 
+const { beaches } = defineProps({
+    beaches: {
+        type: Object,
+        required: true
+    }
+})
 const slidesPerView = ref(4)
     
 onBeforeMount(() => {
