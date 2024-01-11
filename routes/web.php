@@ -20,6 +20,7 @@ use App\Http\Controllers\VendorController;
 
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 Route::get('/vendors', [VendorController::class, 'index'])->name('vendor-list');
+Route::get('/vendors/{vendor}', [VendorController::class, 'show'])->name('vendor-show');
 // Route::get('/about-ternate', function() {
 //     return view('about-ternate');
 // })->name('about-ternate');

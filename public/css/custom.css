@@ -4,7 +4,3 @@
         width: 100%;
     }
 }
-
-.vendorIndexContent > p > img, .vendorIndexContent img {
-    display: none !important;
-}

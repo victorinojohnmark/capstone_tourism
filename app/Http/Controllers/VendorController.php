@@ -20,4 +20,11 @@ class VendorController extends Controller
             'users' => $users
         ]);
     }
+
+    public function show(User $vendor)
+    {
+        return view('user.vendor.view', [
+            'user' => $vendor
+        ]);
+    }
 }
