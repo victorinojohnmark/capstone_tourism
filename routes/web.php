@@ -33,8 +33,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
         Route::get('/galleries', [GalleryController::class, 'index'])->name('user.gallery.index');
         Route::post('/galleries', [GalleryController::class, 'store'])->name('user.gallery.store');
-        Route::delete('/galleries{gallery}', [GalleryController::class, 'destroy'])->name('user.gallery.destroy');
-
+        Route::delete('/galleries/{gallery}', [GalleryController::class, 'destroy'])->name('user.gallery.destroy');
+        Route::post('/galleries/{gallery}', [GalleryController::class, 'setDefault'])->name('user.gallery.setDefault');
     });
 
 });

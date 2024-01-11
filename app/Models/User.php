@@ -49,4 +49,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->attributes['business_name'] ?? $this->attributes['name'];
     }
+
+    public function getDefaultImageAttribute()
+    {
+        return $this->galleries->where('is_default', true);
+    }
 }

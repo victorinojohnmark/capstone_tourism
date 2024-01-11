@@ -24,8 +24,22 @@
             </svg>
             <span class="sr-only">Delete Image</span>
         </button>
+        @if ($gallery->is_default)
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" 
+            class="w-6 h-6 absolute top-1 left-1 text-green-400/40">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>  
+        @endif
+        
         @include('user.gallery.gallery-delete-modal')
-        <img class="mb-4 max-w-full" src="/storage/gallery/{{ $gallery->filename }}" alt="">
+        <img class="mb-4 max-w-full hover:cursor-pointer" data-modal-target="image-set-default-modal{{ $gallery->id }}" data-modal-toggle="image-set-default-modal{{ $gallery->id }}"
+         src="/storage/gallery/{{ $gallery->filename }}" alt="">
+        
+        @if (!$gallery->is_default)
+            @include('user.gallery.gallery-set-default-modal')
+        @endif
+        
+
     </div>
     @empty
      <div>

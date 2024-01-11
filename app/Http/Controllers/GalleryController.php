@@ -54,4 +54,20 @@ class GalleryController extends Controller
 
         return redirect()->back()->with('success', 'Image deleted successfully.');
     }
+
+    public function setDefault(Request $request,Gallery $gallery)
+    {
+
+        $galleries = auth()->user()->galleries;
+        foreach ($galleries as $image) {
+            $image->fill(['is_default' => false]);
+            $image->save();
+        }
+
+        $gallery->fill(['is_default' => true]);
+        $gallery->save();
+
+        return redirect()->back()->with('success', 'Image set as default successfully');
+
+    }
 }
