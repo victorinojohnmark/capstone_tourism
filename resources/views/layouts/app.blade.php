@@ -97,6 +97,7 @@
         </div>
     </footer>
     @yield('scripts')
+    @yield('css')
     <script>
         window.scroll({
             top: 2500, 
