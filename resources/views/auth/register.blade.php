@@ -136,10 +136,9 @@
                         <div class="space-y-4 md:space-y-6 w-full">
                             <div>
                                 <label for="type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Account Type</label>
-                                <select id="type" name="type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
-        
-                                    <option>Tourist</option>
-                                    <option>Vendor</option>
+                                <select id="type" name="type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required onchange="toggleBusinessFields()">
+                                    <option value="Tourist">Tourist</option>
+                                    <option value="Vendor">Vendor</option>
                                 </select>
                                 @error('type')
                                     <small class="text-red-400" role="alert">
@@ -147,8 +146,8 @@
                                     </small>
                                 @enderror
                             </div>
-        
-                            <div>
+                        
+                            <div id="businessTypeContainer" style="display: none;">
                                 <label for="business_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Business Type</label>
                                 <select id="business_type" name="business_type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
                                     <option>Beach Resort</option>
@@ -161,22 +160,21 @@
                                     </small>
                                 @enderror
                             </div>
-        
-                            <div>
+                        
+                            <div id="businessNameContainer" style="display: none;">
                                 <label for="business_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Business Name</label>
-                                <input type="text" name="business_name" id="business_name" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Aristocrat" required="">
+                                <input type="text" name="business_name" id="business_name" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Aristocrat">
                                 @error('business_name')
                                     <small class="text-red-400" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </small>
                                 @enderror
                             </div>
-
+                        
                             <button type="submit" class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create an account</button>
                             <p class="text-sm font-light text-gray-500 dark:text-gray-400">
                                 Already have an account? <a href="{{ route('login') }}" class="font-medium text-blue-600 hover:underline dark:text-blue-500">Login here</a>
                             </p>
-
                         </div>
                     </div>
                     
@@ -187,4 +185,31 @@
         </div>
     </div>
 </section>
+@endsection
+
+@section('scripts')
+<script>
+    function toggleBusinessFields() {
+        var typeSelect = document.getElementById('type');
+        var businessTypeContainer = document.getElementById('businessTypeContainer');
+        var businessNameContainer = document.getElementById('businessNameContainer');
+        var businessTypeSelect = document.getElementById('business_type');
+        var businessNameInput = document.getElementById('business_name');
+
+        if (typeSelect.value === 'Tourist') {
+            businessTypeContainer.style.display = 'none';
+            businessNameContainer.style.display = 'none';
+            businessTypeSelect.removeAttribute('required');
+            businessNameInput.removeAttribute('required');
+            // Clear the values when switching to "Tourist"
+            businessTypeSelect.value = '';
+            businessNameInput.value = '';
+        } else {
+            businessTypeContainer.style.display = 'block';
+            businessNameContainer.style.display = 'block';
+            businessTypeSelect.setAttribute('required', 'required');
+            businessNameInput.setAttribute('required', 'required');
+        }
+    }
+</script>
 @endsection

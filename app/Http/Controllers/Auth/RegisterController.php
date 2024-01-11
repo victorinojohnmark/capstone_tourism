@@ -58,8 +58,8 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'type' => ['required', Rule::in($accountTypes)],
-            'business_type' => ['required', Rule::in($businessType)],
-            'business_name' => ['required', 'max:255']
+            'business_type' => ['nullable', Rule::in($businessType)],
+            'business_name' => ['nullable', 'max:255']
         ]);
     }
 
@@ -76,8 +76,8 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'type' => $data['type'],
-            'business_type' => $data['business_type'],
-            'business_name' => $data['business_name'],
+            'business_type' => $data['business_type'] ?? null,
+            'business_name' => $data['business_name'] ?? null,
         ]);
     }
 }

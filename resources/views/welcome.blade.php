@@ -24,12 +24,14 @@
             <div class="w-full md:w-1/4">
                 <h3 class="text-green-600 font-['Gotcha_Standup'] font-light text-7xl leading-7">Beach <br/><span class="font-['Bebas_Neue'] text-6xl text-neutral-900">&#38; Resort</span></h3>
                 <p class="text-neutral-600 leading-6">Feel the breeze of sea and light of the sun</p>
-                <div class="flex flex-row mt-3 items-center gap-x-3 mb-3">
-                    <div class="text-white bg-yellow-300 rounded-full p-3">
-                        <x-heroicon-o-arrow-right class="w-4 h-4"/>
+                <a href="/vendors?type=Beach%20Resort">
+                    <div class="flex flex-row mt-3 items-center gap-x-3 mb-3">
+                        <div class="text-white bg-yellow-300 rounded-full p-3">
+                            <x-heroicon-o-arrow-right class="w-4 h-4"/>
+                        </div>
+                        <strong class="font-['Bebas_Neue'] text-2xl text-neutral-800">Explore all</strong>
                     </div>
-                    <strong class="font-['Bebas_Neue'] text-2xl text-neutral-800">Explore all</strong>
-                </div>
+                </a>
             </div>
 
             <div class="w-full md:w-3/4">
@@ -44,12 +46,14 @@
                 <div class="w-full md:w-1/4">
                     <h3 class="text-green-600 font-['Gotcha_Standup'] font-light text-7xl leading-7">Restaurant <br/><span class="font-['Bebas_Neue'] text-6xl text-neutral-900">&#38; Diners</span></h3>
                     <p class="text-neutral-600 leading-6">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem amet cum hic similique vero quidem. Mollitia.</p>
-                    <div class="flex flex-row mt-3 items-center gap-x-3 mb-3">
-                        <div class="text-white bg-yellow-300 rounded-full p-3">
-                            <x-heroicon-o-arrow-right class="w-4 h-4"/>
+                    <a href="/vendors?type=Restaurant">
+                        <div class="flex flex-row mt-3 items-center gap-x-3 mb-3">
+                            <div class="text-white bg-yellow-300 rounded-full p-3">
+                                <x-heroicon-o-arrow-right class="w-4 h-4"/>
+                            </div>
+                            <strong class="font-['Bebas_Neue'] text-2xl text-neutral-800">Explore all</strong>
                         </div>
-                        <strong class="font-['Bebas_Neue'] text-2xl text-neutral-800">Explore all</strong>
-                    </div>
+                    </a>
                 </div>
     
                 <div class="w-full md:w-3/4">
@@ -65,10 +69,10 @@
             {{-- <h3 class="text-green-600 font-['Gotcha_Standup'] font-light text-7xl leading-7">Restaurant <br/><span class="font-['Bebas_Neue'] text-6xl text-neutral-900">&#38; Diners</span></h3> --}}
             <h3 class="leading-0 font-bold text-3xl sm:text-5xl text-white font-['Inter'] leading-[50px]">Unveiling Nature's Treasures</h3>
             <div class="flex flex-row mt-3 items-center gap-x-3 mb-3 mx-auto">
-                <div class="text-white bg-yellow-300 rounded-full p-3">
+                {{-- <div class="text-white bg-yellow-300 rounded-full p-3">
                     <x-heroicon-o-arrow-right class="w-4 h-4"/>
                 </div>
-                <strong class="font-['Bebas_Neue'] text-2xl text-neutral-800">Read More</strong>
+                <strong class="font-['Bebas_Neue'] text-2xl text-neutral-800">Read More</strong> --}}
             </div>
         </div>
     </div>
@@ -79,12 +83,14 @@
                 <div class="w-full md:w-1/4">
                     <h3 class="text-green-600 font-['Gotcha_Standup'] font-light text-7xl leading-7">Products <br/><span class="font-['Bebas_Neue'] text-6xl text-neutral-900">&#38; Delicacies</span></h3>
                     <p class="text-neutral-600 leading-6">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem amet cum hic similique vero quidem. Mollitia.</p>
-                    <div class="flex flex-row mt-3 items-center gap-x-3 mb-3">
-                        <div class="text-white bg-yellow-300 rounded-full p-3">
-                            <x-heroicon-o-arrow-right class="w-4 h-4"/>
+                    <a href="/vendors?type=Products%20and%20Delicacies">
+                        <div class="flex flex-row mt-3 items-center gap-x-3 mb-3">
+                            <div class="text-white bg-yellow-300 rounded-full p-3">
+                                <x-heroicon-o-arrow-right class="w-4 h-4"/>
+                            </div>
+                            <strong class="font-['Bebas_Neue'] text-2xl text-neutral-800">Explore all</strong>
                         </div>
-                        <strong class="font-['Bebas_Neue'] text-2xl text-neutral-800">Explore all</strong>
-                    </div>
+                    </a>
                 </div>
     
                 <div class="w-full md:w-3/4">

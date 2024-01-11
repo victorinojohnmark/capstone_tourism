@@ -12,7 +12,8 @@
             </a>
             <div class="flex items-center justify-between w-full sm:w-auto lg:order-2">
                 <div class="" v-if="authenticated">
-                    <form action="/logout" method="post">
+                    <a href="/home" class=" inline-table text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Dashboard</a>
+                    <form action="/logout" method="post" class="inline">
                         <input type="hidden" name="_token" :value="csrfToken">
                         <button type="submit" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-green-600 dark:hover:bg-green-700 focus:outline-none dark:focus:ring-green-800">Logout</button>
                     </form>
