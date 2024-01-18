@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<section id="mainBanner" class="relative h-[calc(100vh-115px)] md:h-[calc(100vh-84px)] w-full bg-green-600 bg-[url('/img/floating.jpg')] bg-center bg-cover overflow-hidden">
+<section id="mainBanner" class="relative h-[calc(100vh-115px)] md:h-[calc(100vh-84px)] w-full bg-[url('/img/floating.jpg')] bg-center bg-cover overflow-hidden">
     <div class="container mx-auto pt-40">
         <div id="bannerText" class="pl-5 sm:pl-10 md:pl-20">
             <h3 class="md:leading-0 font-bold text-5xl sm:text-7xl text-white font-['Inter'] leading-[50px] ml-48">Experience</h3> 

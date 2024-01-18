@@ -16,10 +16,11 @@
     <link href="https://fonts.bunny.net/css?family=Bebas-Neue" rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script>
         window.csrfToken = @json(csrf_token());
     </script>
+    @yield('scripts')
 </head>
 <body>
     <div id="app">
@@ -131,12 +132,12 @@
 
             </aside>
 
-            <main class="p-4 md:ml-64 min-h-[calc(100vh-40px)] pt-20">
+            <main class="md:ml-64 min-h-[calc(100vh-40px)] md:pt-[52px]">
                 @yield('content')
             </main>
         </div>
     </div>
-    @yield('scripts')
+    
 
 
     @auth

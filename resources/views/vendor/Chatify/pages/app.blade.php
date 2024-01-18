@@ -1,5 +1,8 @@
+@extends('layouts.messenger')
+
+@section('content')
 @include('Chatify::layouts.headLinks')
-<div class="messenger">
+<div class="messenger md:mt-0">
     {{-- ----------------------Users/Groups lists side---------------------- --}}
     <div class="messenger-listView {{ !!$id ? 'conversation-active' : '' }}">
         {{-- Header and search bar --}}
@@ -110,3 +113,5 @@
 
 @include('Chatify::layouts.modals')
 @include('Chatify::layouts.footerLinks')
+@endsection
+
