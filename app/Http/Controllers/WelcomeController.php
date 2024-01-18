@@ -10,9 +10,9 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-        $beaches = User::verified()->where('business_type', 'Beach Resort')->get();
-        $restaurants = User::verified()->where('business_type', 'Restaurant')->get();
-        $products = User::verified()->where('business_type', 'Products and Delicacies')->get();
+        $beaches = User::verified()->beachAccounts()->get();
+        $restaurants = User::verified()->restaurantAccounts()->get();
+        $products = User::verified()->productAccounts()->get();
 
         // dd(count($beaches));
         

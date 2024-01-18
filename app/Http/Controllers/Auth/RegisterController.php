@@ -76,8 +76,8 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'type' => $data['type'],
-            'business_type' => $data['business_type'] ?? null,
-            'business_name' => $data['business_name'] ?? null,
+            'business_type' => $data['type'] == 'Tourist' ? null : $data['business_type'] ?? null,
+            'business_name' => $data['type'] == 'Tourist' ? null : $data['business_name'] ?? null,
         ]);
     }
 }

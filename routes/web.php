@@ -6,6 +6,7 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\BusinessInformationController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\VendorController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('/galleries', [GalleryController::class, 'store'])->name('user.gallery.store');
         Route::delete('/galleries/{gallery}', [GalleryController::class, 'destroy'])->name('user.gallery.destroy');
         Route::post('/galleries/{gallery}', [GalleryController::class, 'setDefault'])->name('user.gallery.setDefault');
+
+        Route::get('/profile', [ProfileController::class, 'view'])->name('user.profile.view');
+        Route::post('/profile/update', [ProfileController::class, 'update'])->name('user.profile.update');
     });
 
 });

@@ -66,4 +66,19 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->galleries->where('is_default', true)->first();
     }
+
+    public function scopeRestaurantAccounts($query)
+    {
+        return $query->where('type', 'Vendor')->where('business_type', 'Restaurant');
+    }
+
+    public function scopeBeachAccounts($query)
+    {
+        return $query->where('type', 'Vendor')->where('business_type', 'Beach Resort');
+    }
+
+    public function scopeProductAccounts($query)
+    {
+        return $query->where('type', 'Vendor')->where('business_type', 'Products and Delicacies');
+    }
 }
