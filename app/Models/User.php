@@ -36,9 +36,23 @@ class User extends Authenticatable implements MustVerifyEmail
 
     protected $appends = ['default_image'];
 
+    protected static function boot() {
+        parent::boot();
+
+        static::deleting(function ($user) {
+            $user->information()->delete();
+            $user->galleries()->delete();
+        });
+    }
+
     public function scopeVendor($query)
     {
         $query->where('type', 'Vendor');
+    }
+
+    public function scopeTourist($query)
+    {
+        $query->where('type', 'Tourist');
     }
 
     public function scopeVerified($query)

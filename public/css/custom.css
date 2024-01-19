@@ -4,3 +4,16 @@
         width: 100%;
     }
 }
+
+#mainBanner {
+    background: url('/img/floating.jpg') !important;
+    background-position: center;
+    background-size: cover !important;
+}
+
+#exploreSection {
+    background: url('/img/mountain.jpg') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-attachment: fixed !important;
+}

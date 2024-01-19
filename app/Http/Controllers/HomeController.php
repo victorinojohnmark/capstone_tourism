@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\User;
+
 class HomeController extends Controller
 {
     /**
@@ -23,6 +25,22 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $restaurants = 0;
+        $resorts = 0;
+        $products = 0;
+        $touristCount = 0;
+
+        if(auth()->user()->type == 'Admin') {
+            $restaurants = User::restaurantAccounts()->count();
+            $resorts = User::beachAccounts()->count();
+            $products = User::productAccounts()->count();
+            $touristCount = User::tourist()->count();
+        }
+        return view('home', [
+            'restaurants' => $restaurants,
+            'resorts' => $resorts,
+            'products' => $products,
+            'touristCount' => $touristCount
+        ]);
     }
 }

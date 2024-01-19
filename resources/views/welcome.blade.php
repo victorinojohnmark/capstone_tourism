@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<section id="mainBanner" class="relative h-[calc(100vh-115px)] md:h-[calc(100vh-84px)] w-full bg-[url('/img/floating.jpg')] bg-center bg-cover overflow-hidden">
+<section id="mainBanner" class="relative h-[calc(100vh-115px)] md:h-[calc(100vh-84px)] w-full overflow-hidden">
     <div class="container mx-auto pt-40">
         <div id="bannerText" class="pl-5 sm:pl-10 md:pl-20">
             <h3 class="md:leading-0 font-bold text-5xl sm:text-7xl text-white font-['Inter'] leading-[50px] ml-48">Experience</h3> 
@@ -63,7 +63,7 @@
         </div>
     </div>
 
-    <div class="w-full bg-[url('/img/mountain.jpg')] bg-cover bg-center bg-fixed">
+    <div id="exploreSection" class="w-full">
         <div class="flex flex-col justify-center container mx-auto py-20 px-3 md:px-0 text-center">
             <h3 class="font-['Gotcha_Standup'] font-normal text-4xl md:text-9xl text-yellow-300 -rotate-3 drop-shadow-xl">Explore & Recharge</h3>
             {{-- <h3 class="text-green-600 font-['Gotcha_Standup'] font-light text-7xl leading-7">Restaurant <br/><span class="font-['Bebas_Neue'] text-6xl text-neutral-900">&#38; Diners</span></h3> --}}

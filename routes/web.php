@@ -7,6 +7,7 @@ use App\Http\Controllers\BusinessInformationController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
         Route::get('/profile', [ProfileController::class, 'view'])->name('user.profile.view');
         Route::post('/profile/update', [ProfileController::class, 'update'])->name('user.profile.update');
+    });
+
+    Route::prefix('admin')->group(function () {
+        Route::get('/accounts', [AccountController::class, 'index'])->name('admin.account.index');
+        Route::delete('/accounts/{user}', [AccountController::class, 'destroy'])->name('admin.account.delete');
     });
 
 });
