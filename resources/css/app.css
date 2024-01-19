@@ -52,3 +52,7 @@ body {
     top: 0;
     position: absolute;
 }
+
+.messenger-tab {
+    height: calc(100vh - var(--listView-header-height) - 85px) !important;
+}

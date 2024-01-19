@@ -2,7 +2,7 @@
 
 @section('content')
 @include('Chatify::layouts.headLinks')
-<div class="messenger md:mt-0">
+<div class="messenger md:mt-0 !h-[calc(100vh-70px)]">
     {{-- ----------------------Users/Groups lists side---------------------- --}}
     <div class="messenger-listView {{ !!$id ? 'conversation-active' : '' }}">
         {{-- Header and search bar --}}
