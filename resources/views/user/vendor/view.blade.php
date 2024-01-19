@@ -40,9 +40,11 @@
 {{-- <div class="w-full">
     <iframe src="{{ $user->map_url }}" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </div> --}}
+@if (isset($user->information->map_url))
 <section id="vendorMap">
-   {!! $user->information->map_url !!}
+    {!! $user->information->map_url !!}
 </section>
+@endif
 @endsection
 
 @section('css')
