@@ -26,7 +26,8 @@ class StoreInformationRequest extends FormRequest
             'contact_no' => ['required'],
             'contact_person' => ['required'],
             'email_address' => ['required', 'email'],
-            'address' => ['required']
+            'address' => ['required'],
+            'map_url' => ['required']
         ];
     }
 

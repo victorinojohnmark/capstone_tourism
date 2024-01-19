@@ -39,3 +39,16 @@ body {
     color: white;
 }
 
+
+#vendorMap {
+    padding-bottom: 50% !important;
+    position: relative !important;
+}
+
+#vendorMap iframe {
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+}

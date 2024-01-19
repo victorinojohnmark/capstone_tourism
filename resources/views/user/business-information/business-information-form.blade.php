@@ -19,6 +19,11 @@
     <input value="{{ old('address', $information->address ?? null) }}" type="text" id="address" name="address" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
 </div>
 
+<div class="mb-5">
+    <label for="map_url" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Google Map URL</label>
+    <input value="{{ old('map_url', $information->map_url ?? null) }}" type="text" id="map_url" name="map_url" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+</div>
+
 <div class="mb-12">
     <label for="about_us_content">Content</label>
     <textarea name="about_us_content" class="tinymce-editor" id="about_us_content" cols="30" rows="10">{{ old('about_us_content', $information->about_us_content ?? null) }}</textarea>

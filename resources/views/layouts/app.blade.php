@@ -17,7 +17,7 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="/css/custom.css">
     <script>
         window.csrfToken = @json(csrf_token());
     </script>
