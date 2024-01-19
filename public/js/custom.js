@@ -1,14 +1,22 @@
-function handleImageChange(input, imageId) {
-    // console.log(imageId);
-    const file = input.files[0]; // Get the selected file from the input
-    const selectedImage = document.getElementById(imageId);
+// function handleImageChange(input, imageId) {
+//     const files = input.files; // Get the selected files from the input
+//     const selectedImage = document.getElementById(imageId);
 
-    if (file) {
-        const reader = new FileReader(); // Create a FileReader
-        reader.onload = function(e) {
-            selectedImage.src = e.target.result
-        };
+//     // Clear the existing content in the image viewer
+//     selectedImage.innerHTML = '';
 
-        reader.readAsDataURL(file); // Read the file as a data URL
-    }
-}
+//     for (const file of files) {
+//         const reader = new FileReader(); // Create a FileReader
+
+//         reader.onload = function(e) {
+//             const imgElement = document.createElement('img');
+//             imgElement.src = e.target.result;
+//             imgElement.className = 'w-full';
+            
+//             // Append each image to the image viewer
+//             selectedImage.appendChild(imgElement);
+//         };
+
+//         reader.readAsDataURL(file); // Read the file as a data URL
+//     }
+// }

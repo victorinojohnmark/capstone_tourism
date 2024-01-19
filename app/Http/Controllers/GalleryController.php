@@ -18,34 +18,34 @@ class GalleryController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'name' => 'required|max:255',
-            'file_input' => 'required|mimes:jpg,jpeg,png'
+            // 'name' => 'required|max:255',
+            'file_input.*' => 'required|mimes:jpg,jpeg,png'
         ]);
 
         $data['user_id'] = auth()->user()->id;
 
-        if(!count(auth()->user()->galleries)) {
+        if (!count(auth()->user()->galleries)) {
             $data['is_default'] = true;
         }
 
-        $gallery = Gallery::create($data);
+        // Create the gallery without the file information
+       
 
-        
-
-        if($request->hasFile('file_input')) {
-            $file = $request->file('file_input');
+        // Handle each file in the request
+        foreach ($request->file('file_input') as $file) {
             $fileName = $file->getClientOriginalName();
             $fileExtension = $file->guessExtension();
             $customFileName = uniqid() . now()->timestamp . '.' . $fileExtension;
 
+            // Store the file
             $file->storeAs('/public/gallery/', $customFileName);
 
-            //update image filename
-            $gallery->filename = $customFileName;
-            $gallery->update();
+            $data['filename'] = $customFileName;
+
+            $gallery = Gallery::create($data);
         }
 
-        return redirect()->route('user.gallery.index')->with('success', 'Image uploaded successfully.');
+        return redirect()->route('user.gallery.index')->with('success', 'Images uploaded successfully.');
     }
 
 
