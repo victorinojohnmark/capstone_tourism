@@ -1,7 +1,7 @@
-@extends('layouts.system')
+@extends('layouts.messenger')
 
 @section('content')
-{{-- @include('layouts.message') --}}
+<iframe src="/messenger/4" class="w-full !min-h-[calc(100vh-53px)] h-full" frameborder="0"></iframe>
 
 
 @endsection

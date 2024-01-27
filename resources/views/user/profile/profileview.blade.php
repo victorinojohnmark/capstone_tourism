@@ -4,13 +4,45 @@
 <section class="w-full">
     <div class="w-full flex items-center justify-between">
         <h3 class="text-gray-700 text-3xl inline-flex">Update Profile</h3>
-        {{-- <div class="options inline-flex">
+        <div class="options inline-flex">
+            <button data-modal-target="profile-modal" data-modal-toggle="profile-modal" type="button" class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Update</button>
+            @include('user.profile.profilemodal')
 
-        </div> --}}
+            <button data-modal-target="password-modal" data-modal-toggle="password-modal" type="button" class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Change Password</button>
+            @include('user.profile.passwordmodal')
+        </div>
     </div>
     @include('layouts.message')
 
-    <form class="" action="{{ route('user.profile.update') }}" method="POST">
+    <div>
+        <div class="p-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <div class="font-medium leading-6">Name</div>
+            <div class="mt-1 leading-6 sm:col-span-2 sm:mt-0 ml-0">{{ $user->original_name }}</div>
+        </div>
+        <div class="p-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <div class="font-medium leading-6">Email Address</div>
+            <div class="mt-1 leading-6 sm:col-span-2 sm:mt-0 ml-0">{{ $user->email }}</div>
+        </div>
+        <div class="p-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <div class="font-medium leading-6">Account Type</div>
+            <div class="mt-1 leading-6 sm:col-span-2 sm:mt-0 ml-0">{{ $user->type }}</div>
+        </div>
+        @if ($user->business_type)
+        <div class="p-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <div class="font-medium leading-6">Business Type</div>
+            <div class="mt-1 leading-6 sm:col-span-2 sm:mt-0 ml-0">{{ $user->business_type }}</div>
+        </div>
+        @endif
+        @if ($user->business_name)
+        <div class="p-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <div class="font-medium leading-6">Business Name</div>
+            <div class="mt-1 leading-6 sm:col-span-2 sm:mt-0 ml-0">{{ $user->business_name }}</div>
+        </div>
+        @endif
+        
+    </div>
+
+    {{-- <form class="" action="{{ route('user.profile.update') }}" method="POST">
         @csrf
         <div class="flex flex-col md:flex-row items-start justify-center  gap-x-4 mb-4 w-full">
             
@@ -117,7 +149,7 @@
         
         
         
-    </form>
+    </form> --}}
     
 
 </section>

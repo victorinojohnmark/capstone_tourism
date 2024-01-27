@@ -22,4 +22,13 @@ class WelcomeController extends Controller
             'products' => $products
         ]);
     }
+
+    public function showMessage()
+    {
+        return view('messages.message-index');
+    }
 }
+
+
+
+

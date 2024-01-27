@@ -8,11 +8,11 @@
 /* Local Font */
 @font-face {
     font-family: 'Gotcha Standup';
-    src: url('/font/gotcha_standup/Gotcha-Standup.eot');
-    src: url('/font/gotcha_standup/Gotcha-Standup.eot?#iefix') format('embedded-opentype'),
-         url('/font/gotcha_standup/Gotcha-Standup.woff2') format('woff2'),
-         url('/font/gotcha_standup/Gotcha-Standup.woff') format('woff'),
-         url('/font/gotcha_standup/Gotcha-Standup.ttf') format('truetype');
+    src: url('../font/gotcha_standup/Gotcha-Standup.eot');
+    src: url('../font/gotcha_standup/Gotcha-Standup.eot?#iefix') format('embedded-opentype'),
+         url('../font/gotcha_standup/Gotcha-Standup.woff2') format('woff2'),
+         url('../font/gotcha_standup/Gotcha-Standup.woff') format('woff'),
+         url('../font/gotcha_standup/Gotcha-Standup.ttf') format('truetype');
     
 }
 
@@ -53,6 +53,41 @@ body {
     position: absolute;
 }
 
-.messenger-tab {
-    height: calc(100vh - var(--listView-header-height) - 85px) !important;
+#aboutUsContent {
+    h1, h2, h3, h4, h5, h6 {
+        font-weight: bold !important;
+        margin: 10px auto;
+    }
+
+    h1 {
+        font-size: 2em !important;
+    }
+    
+    h2 {
+        font-size: 1.5em !important;
+    }
+
+    h3 {
+        font-size: 1.17em !important;
+    }
+
+    h4 {
+        font-size: 16px !important;
+    }
+
+    h5 {
+        font-size: 13px !important;
+    }
+
+    h6 {
+        font-size: 10.72px !important;
+    }
+
+    p {
+        font-size: 16px !important;
+    }
 }
+
+/* .messenger-tab {
+    height: calc(100vh - var(--listView-header-height) - 85px) !important;
+} */

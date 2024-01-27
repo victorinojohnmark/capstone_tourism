@@ -20,11 +20,17 @@
 
     @if ($information)
         <div class="flex flex-col md:flex-row">
-            <div class="aboutUsContent w-full md:w-2/3 p-3">
+            <div id="aboutUsContent" class="w-full md:w-2/3 p-3">
                 {!! $information->about_us_content !!}
             </div>
-            <div class="aboutUsContact w-full md:w-1/3 p-3">
-                
+            <div id="aboutUsContact" class="w-full md:w-1/3 p-3">
+                <div class="w-full p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+                    {{-- <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Contact Information</h5> --}}
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"><strong>Contact Person: </strong>{{ $information->contact_person }}</p>
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"><strong>Contact No: </strong>{{ $information->contact_no }}</p>
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"><strong>Email Address: </strong>{{ $information->email_address }}</p>
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"><strong>Address: </strong>{{ $information->address }}</p>
+                </div>
             </div>
         </div>
         

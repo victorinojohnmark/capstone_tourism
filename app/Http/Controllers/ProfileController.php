@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
 
@@ -24,8 +25,6 @@ class ProfileController extends Controller
 
         $data = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            // 'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $user->id],
-            'password' => ['nullable', 'string', 'min:8', 'confirmed'],
             'type' => ['required', Rule::in($accountTypes)],
             'business_type' => [
                 Rule::when($request->input('type') == 'Vendor', ['required', Rule::in($businessType)]),
@@ -37,12 +36,12 @@ class ProfileController extends Controller
             ],
         ]);
 
-        if ($data['password']) {
-            $data['password'] = bcrypt($data['password']);
-        } else {
-            unset($data['password']);
-            unset($data['password_confirmation']);
-        }
+        // if ($data['password']) {
+        //     $data['password'] = bcrypt($data['password']);
+        // } else {
+        //     unset($data['password']);
+        //     unset($data['password_confirmation']);
+        // }
 
         if($data['type'] == 'Tourist') {
             $data['business_type'] = null;
@@ -52,5 +51,29 @@ class ProfileController extends Controller
         $user->update($data);
 
         return redirect()->route('user.profile.view')->with('success', 'Profile Updated Successfully');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $user = auth()->user();
+
+        //check current password if match
+
+        if(!Hash::check($request->input('current_password'), $user->password)) {
+            return back()->withErrors(['current_password' => 'Current password does not match']);
+        }
+
+        $data = $request->validate([
+            'current_password' => ['required', 'string'],
+            'password' => ['nullable', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        
+        
+
+        $user->fill($data);
+        $user->save();
+
+        return redirect()->route('user.profile.view')->with('success', 'Password Updated Successfully');
     }
 }
