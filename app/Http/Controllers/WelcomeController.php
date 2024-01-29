@@ -23,9 +23,12 @@ class WelcomeController extends Controller
         ]);
     }
 
-    public function showMessage()
+    public function showMessage($userid = null)
     {
-        return view('messages.message-index');
+        // dd('hello');
+        return view('messages.message-index', [
+            'userid' => $userid
+        ]);
     }
 }
 

@@ -240,6 +240,7 @@ class MessagesController extends Controller
         if (count($usersList) > 0) {
             $contacts = '';
             foreach ($usersList as $user) {
+                $user->name = $user->business_name ?? $user->name; // updated on load, bug where default name showing on initial load
                 $contacts .= Chatify::getContactItem($user);
             }
         } else {

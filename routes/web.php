@@ -23,7 +23,8 @@ use App\Http\Controllers\AccountController;
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 Route::get('/vendors', [VendorController::class, 'index'])->name('vendor-list');
 Route::get('/vendors/{vendor}', [VendorController::class, 'show'])->name('vendor-show');
-Route::get('/messenger', [WelcomeController::class, 'showMessage'])->name('showMessage');
+Route::get('/inbox', [WelcomeController::class, 'showMessage'])->name('showMessage');
+Route::get('/inbox/{userid}', [WelcomeController::class, 'showMessage'])->name('showMessage');
 // Route::get('/about-ternate', function() {
 //     return view('about-ternate');
 // })->name('about-ternate');
