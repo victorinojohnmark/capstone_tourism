@@ -37,4 +37,20 @@ class AccountController extends Controller
 
         return redirect()->back()->with('sucess', 'Account has been deleted');
     }
+
+    public function hold(Request $request, User $user)
+    {
+        $user->is_on_hold = 1;
+        $user->save();
+
+        return redirect()->back()->with('sucess', 'Account has been put on hold');
+    }
+
+    public function open(Request $request, User $user)
+    {
+        $user->is_on_hold = 0;
+        $user->save();
+
+        return redirect()->back()->with('sucess', 'Account has been enabled successfully.');
+    }
 }

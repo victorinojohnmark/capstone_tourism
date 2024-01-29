@@ -9,7 +9,7 @@ class VendorController extends Controller
 {
     public function index(Request $request)
     {
-        $users = User::vendor()
+        $users = User::notOnHold()->vendor()
         ->where(function($query) use($request){
             if($request->query('type')) {
                 $query->where('business_type', $request->query('type'));
@@ -23,6 +23,9 @@ class VendorController extends Controller
 
     public function show(User $vendor)
     {
+        if($vendor->is_on_hold) {
+            return abort(404) ;
+        }
         return view('user.vendor.view', [
             'user' => $vendor
         ]);

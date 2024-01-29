@@ -75,4 +75,5 @@
 
 @section('css')
     <link rel="stylesheet" href="/css/custom.css">
+    
 @endsection

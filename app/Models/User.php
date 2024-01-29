@@ -21,7 +21,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'type',
         'business_type',
-        'business_name'
+        'business_name',
+        'is_on_hold'
     ];
 
     protected $hidden = [
@@ -48,6 +49,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function scopeVendor($query)
     {
         $query->where('type', 'Vendor');
+    }
+
+    public function scopeNotOnHold($query)
+    {
+        $query->where('is_on_hold', 0);
     }
 
     public function scopeTourist($query)

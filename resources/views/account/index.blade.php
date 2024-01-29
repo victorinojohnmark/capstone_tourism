@@ -56,10 +56,22 @@
                 {{ $user->business_name ?? '-' }}
             </td> --}}
             <td class="px-6 !py-4">
-                <button data-modal-target="deleteAccountModal{{ $user->id }}" data-modal-toggle="deleteAccountModal{{ $user->id }}" class="block text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800" type="button">
+                <button data-modal-target="deleteAccountModal{{ $user->id }}" data-modal-toggle="deleteAccountModal{{ $user->id }}" class="inline mx-1 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800" type="button">
                     Delete
                 </button>
                 @include('account.account-delete-modal')
+
+                @if ($user->is_on_hold)
+                <button data-modal-target="openAccountModal{{ $user->id }}" data-modal-toggle="openAccountModal{{ $user->id }}" class="inline mx-1 text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" type="button">
+                    Open Account
+                </button>
+                @include('account.account-open-modal')
+                @else
+                <button data-modal-target="holdAccountModal{{ $user->id }}" data-modal-toggle="holdAccountModal{{ $user->id }}" class="inline mx-1 text-white bg-orange-700 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800" type="button">
+                    Hold Account
+                </button>
+                @include('account.account-hold-modal')
+                @endif
             </td>
         </tr>
         @empty

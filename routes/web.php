@@ -25,6 +25,10 @@ Route::get('/vendors', [VendorController::class, 'index'])->name('vendor-list');
 Route::get('/vendors/{vendor}', [VendorController::class, 'show'])->name('vendor-show');
 Route::get('/inbox', [WelcomeController::class, 'showMessage'])->name('showMessage');
 Route::get('/inbox/{userid}', [WelcomeController::class, 'showMessage'])->name('showMessage');
+
+Route::get('/accountonhold', function() {
+    return view('system.onhold-account');
+})->name('payment.settle');
 // Route::get('/about-ternate', function() {
 //     return view('about-ternate');
 // })->name('about-ternate');
@@ -32,26 +36,33 @@ Route::get('/inbox/{userid}', [WelcomeController::class, 'showMessage'])->name('
 Auth::routes(['verify' => true]);
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    
 
-    Route::prefix('user')->group(function () {
-        Route::get('/about-us', [BusinessInformationController::class, 'show'])->name('user.business.show');
-        Route::post('/about-us', [BusinessInformationController::class, 'store'])->name('user.business.store');
-        Route::post('/about-us/{information}', [BusinessInformationController::class, 'update'])->name('user.business.update');
-
-        Route::get('/galleries', [GalleryController::class, 'index'])->name('user.gallery.index');
-        Route::post('/galleries', [GalleryController::class, 'store'])->name('user.gallery.store');
-        Route::delete('/galleries/{gallery}', [GalleryController::class, 'destroy'])->name('user.gallery.destroy');
-        Route::post('/galleries/{gallery}', [GalleryController::class, 'setDefault'])->name('user.gallery.setDefault');
-
-        Route::get('/profile', [ProfileController::class, 'view'])->name('user.profile.view');
-        Route::post('/profile/update', [ProfileController::class, 'update'])->name('user.profile.update');
-        Route::post('/profile/updatepassword', [ProfileController::class, 'updatePassword'])->name('user.profile.update-password');
+    Route::middleware(['checkAccountStatus'])->group(function () {
+        Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+        
+        Route::prefix('user')->group(function () {
+            Route::get('/about-us', [BusinessInformationController::class, 'show'])->name('user.business.show');
+            Route::post('/about-us', [BusinessInformationController::class, 'store'])->name('user.business.store');
+            Route::post('/about-us/{information}', [BusinessInformationController::class, 'update'])->name('user.business.update');
+    
+            Route::get('/galleries', [GalleryController::class, 'index'])->name('user.gallery.index');
+            Route::post('/galleries', [GalleryController::class, 'store'])->name('user.gallery.store');
+            Route::delete('/galleries/{gallery}', [GalleryController::class, 'destroy'])->name('user.gallery.destroy');
+            Route::post('/galleries/{gallery}', [GalleryController::class, 'setDefault'])->name('user.gallery.setDefault');
+    
+            Route::get('/profile', [ProfileController::class, 'view'])->name('user.profile.view');
+            Route::post('/profile/update', [ProfileController::class, 'update'])->name('user.profile.update');
+            Route::post('/profile/updatepassword', [ProfileController::class, 'updatePassword'])->name('user.profile.update-password');
+        });
     });
+    
 
     Route::prefix('admin')->group(function () {
         Route::get('/accounts', [AccountController::class, 'index'])->name('admin.account.index');
         Route::delete('/accounts/{user}', [AccountController::class, 'destroy'])->name('admin.account.delete');
+        Route::delete('/accounts/{user}/hold', [AccountController::class, 'hold'])->name('admin.account.hold');
+        Route::delete('/accounts/{user}/open', [AccountController::class, 'open'])->name('admin.account.open');
     });
 
 });
