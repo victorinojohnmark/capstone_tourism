@@ -1,7 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="bg-gray-50 dark:bg-gray-900">
+<section class="relative overflow-hidden">
+    <div class="absolute -z-10 w-[110%] h-[110%] overflow-hidden">
+        {{-- video here as background --}}
+        <video autoplay muted loop class="absolute -top-3 right-5 z-0 w-full h-full object-cover filter blur-md">
+            <source src="/video/sea.mp4" type="video/mp4">
+        </video>
+    </div>
     <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
             <img class="w-8 h-8 mr-2" src="/img/ternate_seal_icon.png" alt="logo">
