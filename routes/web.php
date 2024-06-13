@@ -23,8 +23,7 @@ use App\Http\Controllers\AccountController;
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 Route::get('/vendors', [VendorController::class, 'index'])->name('vendor-list');
 Route::get('/vendors/{vendor}', [VendorController::class, 'show'])->name('vendor-show');
-Route::get('/inbox', [WelcomeController::class, 'showMessage'])->name('showMessage');
-Route::get('/inbox/{userid}', [WelcomeController::class, 'showMessage'])->name('showMessage');
+
 
 Route::get('/accountonhold', function() {
     return view('system.onhold-account');
@@ -40,6 +39,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::middleware(['checkAccountStatus'])->group(function () {
         Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+        Route::get('/inbox', [WelcomeController::class, 'showMessage'])->name('showMessage');
+        Route::get('/inbox/{userid}', [WelcomeController::class, 'showMessage'])->name('showMessage');
         
         Route::prefix('user')->group(function () {
             Route::get('/about-us', [BusinessInformationController::class, 'show'])->name('user.business.show');
