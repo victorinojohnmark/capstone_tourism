@@ -3,9 +3,6 @@
 @section('content')
 <div class="w-full my-5">
     <div class="container mx-auto px-3 md:px-0">
-        {{-- <h2 class="mb-4 text-2xl tracking-tight font-extrabold text-gray-900 dark:text-white">{{ $user->name }}</h2> --}}
-        {{-- <a href="/messenger/{{ $user->id }}" target="_blank" class="table text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Message Us</a><br> --}}
-        {{-- <div class="w-full block font-light text-gray-500 text-base dark:text-gray-400 mb-6">{!! $user->information?->about_us_content !!}</div> --}}
 
         @if ($user->information)
         <section class="bg-white dark:bg-gray-900">
@@ -22,45 +19,42 @@
         <p>No information posted yet.</p>
         @endif
 
-        <section id="contactInformation" class="relative flex flex-col md:flex-row gap-4">
+        <section id="contactInformation" class="relative mx-auto lg:px-6 flex flex-col md:flex-row gap-6 py-6">
+          <div class="flex flex-col w-full md:w-1/2">
+            @if (isset($user->information->map_url))
+            <div id="vendorMap" class="mb-12">
+                <h4 class="mb-4 text-xl tracking-tight font-extrabold text-gray-900 dark:text-white">Map Location</h4>
+                {!! $user->information->map_url !!}
+            </div>
+            @endif
+
             @if ($user->information)
-            <div class="w-full md:w-1/4">
-                <h4 class="mb-4 text-xl tracking-tight font-extrabold text-gray-900 dark:text-white">Contact Details</h4>
+            <div class="py-3">
+                <div class="flex flex-row justify-between">
+                  <h4 class="mb-4 text-xl tracking-tight font-extrabold text-gray-900 dark:text-white">Contact Details</h4>
+                  <a href="/inbox/{{ $user->id }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Message Us</a>
+                </div>
+                
                 <ul class="mb-4">
                     <li><strong>Contact Person: </strong>{{ $user->information->contact_person }}</li>
                     <li><strong>Contact No: </strong>{{ $user->information->contact_no }}</li>
                     <li><strong>Email Address: </strong>{{ $user->information->email_address }}</li>
                     <li><strong>Address: </strong>{{ $user->information->address }}</li>
                 </ul>
-                <a href="/inbox/{{ $user->id }}" class="mb-6 text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Message Us</a>
+                
             </div>
             @endif
+          </div>
 
-            @if (isset($user->information->map_url))
-            <div id="vendorMap" class="w-full md:w-3/4 mb-12">
-                <h4 class="mb-4 text-xl tracking-tight font-extrabold text-gray-900 dark:text-white">Map Location</h4>
-                {!! $user->information->map_url !!}
-            </div>
-            @endif
+          <div class="w-full md:w-1/2">
+            <h4 class="mb-4 text-xl tracking-tight font-extrabold text-gray-900 dark:text-white">Book your reservation</h4>
+            <booking-calendar />
+          </div>
         </section>
-        
-        
-        
+    
         <div class="relative block">
             <hr class="block my-3">
             <h3 class="text-gray-700 text-xl my-3">Gallery</h3>
-            {{-- <div class="columns-2 md:columns-3 lg:columns-4 mt-6">
-                @forelse ($user->galleries as $gallery)
-                <div class="relative">
-                    <img class="mb-4 max-w-full hover:cursor-pointer" src="/storage/gallery/{{ $gallery->filename }}" alt="">
-                </div>
-                @empty
-                <div>
-                    <img src="https://placehold.co/600x400?text=No%20upload%20image%20yet" alt="">
-                </div>
-                @endforelse
-                
-            </div> --}}
 
             <div class="row">
                 @forelse ($user->galleries as $gallery)
@@ -72,18 +66,7 @@
                     <img src="https://placehold.co/600x400?text=No%20upload%20image%20yet" alt="">
                 </div>
                 @endforelse
-                {{-- <div class="column">
-                  <img src="https://www.w3schools.com/howto/img_nature.jpg" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
-                </div>
-                <div class="column">
-                  <img src="https://www.w3schools.com/howto/img_snow.jpg" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
-                </div>
-                <div class="column">
-                  <img src="https://www.w3schools.com/howto/img_mountains.jpg" style="width:100%" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
-                </div>
-                <div class="column">
-                  <img src="https://www.w3schools.com/howto/img_lights.jpg" style="width:100%" onclick="openModal();currentSlide(4)" class="hover-shadow cursor">
-                </div> --}}
+                
               </div>
             
               <div id="myModal" class="modal backdrop-blur-sm bg-gray-800/50">
@@ -92,31 +75,11 @@
                     
                     @forelse ($user->galleries as $gallery)
                         <div class="mySlides">
-                            {{-- <div class="numbertext">1 / 4</div> --}}
                             <img src="/storage/gallery/{{ $gallery->filename }}" class="w-full aspect-video object-cover">
                         </div>
                     @empty
                     
                     @endforelse
-                  {{-- <div class="mySlides">
-                    <div class="numbertext">1 / 4</div>
-                    <img src="https://www.w3schools.com/howto/img_nature_wide.jpg" style="width:100%">
-                  </div>
-            
-                  <div class="mySlides">
-                    <div class="numbertext">2 / 4</div>
-                    <img src="https://www.w3schools.com/howto/img_snow_wide.jpg" style="width:100%">
-                  </div>
-            
-                  <div class="mySlides">
-                    <div class="numbertext">3 / 4</div>
-                    <img src="https://www.w3schools.com/howto/img_mountains_wide.jpg" style="width:100%">
-                  </div>
-            
-                  <div class="mySlides">
-                    <div class="numbertext">4 / 4</div>
-                    <img src="https://www.w3schools.com/howto/img_lights_wide.jpg" style="width:100%">
-                  </div> --}}
             
                   <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                   <a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -133,25 +96,11 @@
                 
                 @endforelse
             
-                  
-                  {{-- <div class="column">
-                    <img class="demo cursor" src="https://www.w3schools.com/howto/img_snow_wide.jpg" style="width:100%" onclick="currentSlide(2)" alt="Snow">
-                  </div>
-                  <div class="column">
-                    <img class="demo cursor" src="https://www.w3schools.com/howto/img_mountains_wide.jpg" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
-                  </div>
-                  <div class="column">
-                    <img class="demo cursor" src="https://www.w3schools.com/howto/img_lights_wide.jpg" style="width:100%" onclick="currentSlide(4)" alt="Northern Lights">
-                  </div> --}}
                 </div>
               </div>
         </div>
     </div>
 </div>
-
-{{-- <div class="w-full">
-    <iframe src="{{ $user->map_url }}" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-</div> --}}
 
 @endsection
 
