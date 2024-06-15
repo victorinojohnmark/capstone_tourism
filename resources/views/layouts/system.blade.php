@@ -73,7 +73,7 @@
                             id="user-menu-button" aria-expanded="false" data-dropdown-toggle="dropdown">
                             <span class="sr-only">Open user menu</span>
                             <img class="w-8 h-8 rounded-full"
-                                src="https://www.jea.com/cdn/images/avatar/avatar-alt.svg"
+                                src="/img/user-placeholder.png"
                                 alt="user photo" />
                         </button>
                         <!-- Dropdown menu -->

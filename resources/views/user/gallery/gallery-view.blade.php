@@ -32,7 +32,7 @@
         @endif
         
         @include('user.gallery.gallery-delete-modal')
-        <img class="mb-4 max-w-full hover:cursor-pointer" data-modal-target="image-set-default-modal{{ $gallery->id }}" data-modal-toggle="image-set-default-modal{{ $gallery->id }}"
+        <img class="mb-4 max-w-full hover:cursor-pointer" @if (!$gallery->is_default) data-modal-target="image-set-default-modal{{ $gallery->id }}" data-modal-toggle="image-set-default-modal{{ $gallery->id }}" @endif
          src="/storage/gallery/{{ $gallery->filename }}" alt="">
         
         @if (!$gallery->is_default)
