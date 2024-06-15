@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- <VCalendar v-model.range="range" :attributes="attributes" :min-date='new Date()' is-range /> -->
-        <VDatePicker v-model.range="range" :attributes="attributes" :min-date='new Date()' />
+        <VDatePicker v-model.range="range" :attributes="attributes" :min-date='new Date()' expanded />
     </div>
 </template>
 
