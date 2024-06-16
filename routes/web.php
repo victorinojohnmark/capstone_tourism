@@ -9,6 +9,8 @@ use App\Http\Controllers\VendorController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AccountController;
 
+use App\Http\Controllers\API\APIReservationController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -56,6 +58,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::get('/profile', [ProfileController::class, 'view'])->name('user.profile.view');
             Route::post('/profile/update', [ProfileController::class, 'update'])->name('user.profile.update');
             Route::post('/profile/updatepassword', [ProfileController::class, 'updatePassword'])->name('user.profile.update-password');
+
+           
         });
     });
     

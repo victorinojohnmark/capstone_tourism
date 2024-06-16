@@ -1,7 +1,14 @@
 <template>
-    <div class="p-5 border border-gray-200 rounded-lg bg-gray-100">
+    <div class="relative p-5 border border-gray-200 rounded-lg bg-gray-100">
+        <div v-if="successReservation" class="absolute flex flex-col items-center justify-center top-0 left-0 w-full h-full bg-white bg-opacity-95 p-6 z-10">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-20 text-blue-600 pb-3">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+          </svg>
+          <p class="text-green-600 font-medium text-center">Thank you! Your reservation has been submitted successfully. Our representative will get in touch to you thru email.</p>
+
+        </div>
         <form @submit.prevent="submitReservation">
-          <VDatePicker v-model.range="reservation.range" @change="console.log(this)" :attributes="attributes" :min-date='new Date()' expanded />
+          <VDatePicker v-model.range="reservation.range" :attributes="attributes" :min-date='new Date()' mode="date" expanded />
           <div class="flex gap-3 py-3">
 
             <div id="typeSelector" class="w-full md:w-1/3">
@@ -30,15 +37,23 @@
             
 
           </div>
+          <!-- {{ reservation }} -->
           <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit Reservation</button>
         </form>
     </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { nextTick, onBeforeMount, ref } from 'vue'
+import { useSystemStore } from '../store/system';
+import { format } from 'date-fns'
+
+const systemStore = useSystemStore()
 
 const today = new Date().toISOString().split('T')[0];
+const vendor_id = ref(null)
+const model = 'reservation'
+const successReservation = ref(false)
 
 const attributes = ref([
   {
@@ -51,7 +66,21 @@ const attributes = ref([
   }
 ]);
 
+const handleError = (error) => {
+    if(error.response.data.message) {
+        systemStore.systemStatus = error.response.data.message
+    }
+
+    console.error('Something went wrong: '. error)
+    systemStore.error = { [model]: error.response.data.errors }
+
+    return error
+}
+
+const emits = defineEmits(['reservationSubmitted'])
+
 const reservation = ref({
+  vendor_id,
   type: 'Day Tour',
   adult_count: 1,
   child_count: 0,
@@ -61,7 +90,53 @@ const reservation = ref({
   }
 })
 
-const submitReservation = async () => {
-
+const resetValues = async () => {
+  reservation.value.type = 'Day Tour'
+  reservation.value.adult_count = 1
+  reservation.value.child_count = 0
+  reservation.value.range.start = null
+  reservation.value.range.end = null
+  await nextTick()
+  reservation.value.range.start = new Date()
+  reservation.value.range.end = new Date()
+  reservation.value.vendor_id = vendor_id.value
 }
+
+
+const submitReservation = async () => {
+  try {
+        // Format the dates before sending the request
+        const formattedReservation = {
+            ...reservation.value,
+            range: {
+                start: format(reservation.value.range.start, 'yyyy-MM-dd HH:mm:ss'),
+                end: format(reservation.value.range.end, 'yyyy-MM-dd HH:mm:ss')
+            }
+        }
+        const response = await window.axios.post('/api/reservations', formattedReservation)
+
+        if(response) {
+            console.log(response.data)
+            successReservation.value = true
+            systemStore.reset()
+            resetValues().then(() => {
+                setTimeout(() => {
+                  successReservation.value = false
+                    emits('reservationSubmitted')
+                }, 10000);
+            })
+        }
+
+    } catch (error) {
+        handleError(error)
+    }
+}
+
+
+onBeforeMount(async () => {
+  //get id from route
+  const url = window.location.pathname;
+  const segments = url.split('/');
+  vendor_id.value = segments[segments.length - 1];
+})
 </script>
