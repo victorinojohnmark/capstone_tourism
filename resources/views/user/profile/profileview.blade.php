@@ -23,6 +23,12 @@
             <div class="font-medium leading-6">Email Address</div>
             <div class="mt-1 leading-6 sm:col-span-2 sm:mt-0 ml-0">{{ $user->email }}</div>
         </div>
+
+        <div class="p-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <div class="font-medium leading-6">Contact No</div>
+            <div class="mt-1 leading-6 sm:col-span-2 sm:mt-0 ml-0">{{ $user->contact_no ?? 'N/A' }}</div>
+        </div>
+
         <div class="p-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <div class="font-medium leading-6">Account Type</div>
             <div class="mt-1 leading-6 sm:col-span-2 sm:mt-0 ml-0">{{ $user->type }}</div>

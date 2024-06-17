@@ -25,6 +25,7 @@ class ProfileController extends Controller
 
         $data = $request->validate([
             'name' => ['required', 'string', 'max:255'],
+            'contact_no' => ['required', 'max:255'],
             'type' => ['required', Rule::in($accountTypes)],
             'business_type' => [
                 Rule::when($request->input('type') == 'Vendor', ['required', Rule::in($businessType)]),

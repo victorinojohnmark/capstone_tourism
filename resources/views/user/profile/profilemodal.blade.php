@@ -29,6 +29,16 @@
                                 </small>
                             @enderror
                         </div>
+
+                        <div class="w-full">
+                            <label for="contact_no" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contact No</label>
+                            <input type="text" name="contact_no" value="{{ old('name', $user->contact_no ?? null) }}" id="contact_no" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="09061237890" required="">
+                            @error('contact_no')
+                                <small class="text-red-400" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </small>
+                            @enderror
+                        </div>
             
                         <div class="w-full">
                             <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>

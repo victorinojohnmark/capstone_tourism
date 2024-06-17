@@ -26,9 +26,13 @@
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
             @if (Auth::user()->is_beach_resort_owner)
-            <th scope="col" class="px-6 py-3">
-                Name
-            </th>
+                <th scope="col" class="px-6 py-3">
+                    Name
+                </th>
+
+                <th scope="col" class="px-6 py-3">
+                    Contact No.
+                </th>
             @endif
             
             <th scope="col" class="px-6 py-3">
@@ -55,6 +59,11 @@
                 <th scope="row" class="px-6 !py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {{ $reservation->tourist->name }}
                 </th>
+
+                <td class="px-6 !py-4">
+                    {{ $reservation->tourist->contact_no ?? 'N/A' }}
+                </td>
+
             @endif
             <td class="px-6 !py-4">
                 {{ $reservation->tour_type }}
