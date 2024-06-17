@@ -34,6 +34,11 @@
                     Contact No.
                 </th>
             @endif
+            @if (Auth::user()->is_tourist)
+            <th scope="col" class="px-6 py-3">
+                Beach & Resort
+            </th>
+            @endif
             
             <th scope="col" class="px-6 py-3">
                 Type
@@ -64,6 +69,11 @@
                     {{ $reservation->tourist->contact_no ?? 'N/A' }}
                 </td>
 
+            @endif
+            @if (Auth::user()->is_tourist)
+                <td class="px-6 !py-4">
+                    {{ $reservation->vendor->name }}
+                </td>
             @endif
             <td class="px-6 !py-4">
                 {{ $reservation->tour_type }}
