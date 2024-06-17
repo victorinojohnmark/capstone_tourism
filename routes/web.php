@@ -9,7 +9,7 @@ use App\Http\Controllers\VendorController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AccountController;
 
-use App\Http\Controllers\API\APIReservationController;
+use App\Http\Controllers\ReservationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,16 +59,26 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::post('/profile/update', [ProfileController::class, 'update'])->name('user.profile.update');
             Route::post('/profile/updatepassword', [ProfileController::class, 'updatePassword'])->name('user.profile.update-password');
 
-           
+            Route::middleware(['beachResortBusiness'])->group(function () {
+                Route::get('/reservations', [ReservationController::class, 'index'])->name('user.client-reservation.index');
+                Route::delete('/reservations/{reservation}', [ReservationController::class,'destroy'])->name('reservation.destroy');
+                Route::post('/reservations/{reservation}/approve', [ReservationController::class,'approve'])->name('reservation.approve');
+                // Route::get('/reservations/create', [ReservationController::class, 'create'])->name('user.reservation.create');
+                // Route::post('/reservations/create', [ReservationController::class,'store'])->name('user.reservation.store');
+                // Route::get
+            });
         });
     });
     
 
     Route::prefix('admin')->group(function () {
+        // accounts
         Route::get('/accounts', [AccountController::class, 'index'])->name('admin.account.index');
         Route::delete('/accounts/{user}', [AccountController::class, 'destroy'])->name('admin.account.delete');
         Route::delete('/accounts/{user}/hold', [AccountController::class, 'hold'])->name('admin.account.hold');
         Route::delete('/accounts/{user}/open', [AccountController::class, 'open'])->name('admin.account.open');
+
+        
     });
 
 });

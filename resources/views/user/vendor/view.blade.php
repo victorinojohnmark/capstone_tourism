@@ -47,9 +47,12 @@
           </div>
 
           <div class="w-full md:w-1/2">
-            <h4 class="mb-4 text-xl tracking-tight font-extrabold text-gray-900 dark:text-white">Book your reservation</h4>
+            
             @if (Auth::id())
-              <booking-calendar />
+              @if (Auth::user()->is_tourist)
+                <h4 class="mb-4 text-xl tracking-tight font-extrabold text-gray-900 dark:text-white">Book your reservation</h4>
+                <booking-calendar />
+              @endif
             @else
               <p>Please <a href="/login" class=" text-blue-700 underline" rel="noopener noreferrer">login</a> to access this reservation feature</p>
             @endif

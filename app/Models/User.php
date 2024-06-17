@@ -18,6 +18,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $fillable = [
         'name',
         'email',
+        'contact_no',
         'password',
         'type',
         'business_type',
@@ -35,7 +36,13 @@ class User extends Authenticatable implements MustVerifyEmail
         'password' => 'hashed',
     ];
 
-    protected $appends = ['default_image'];
+    protected $appends = [
+        'default_image',
+        'is_vendor',
+        'is_tourist',
+        'is_admin',
+        'is_beach_resort_owner'
+    ];
 
     protected static function boot() {
         parent::boot();
@@ -77,6 +84,16 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Gallery::class);
     }
 
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class,'user_id');
+    }
+
+    public function clientReservations()
+    {
+        return $this->hasMany(Reservation::class,'vendor_id');
+    }
+
     public function getNameAttribute()
     {
         return $this->attributes['business_name'] ?? $this->attributes['name'];
@@ -90,6 +107,26 @@ class User extends Authenticatable implements MustVerifyEmail
     public function getDefaultImageAttribute()
     {
         return $this->galleries->where('is_default', true)->first();
+    }
+
+    public function getIsTouristAttribute()
+    {
+        return $this->type == 'Tourist';
+    }
+
+    public function getIsVendorAttribute()
+    {
+        return $this->type == 'Vendor';
+    }
+
+    public function getIsAdminAttribute()
+    {
+        return $this->type == 'Admin';
+    }
+
+    public function getIsBeachResortOwnerAttribute()
+    {
+        return $this->type == 'Vendor' && $this->business_type == 'Beach Resort';
     }
 
     public function scopeRestaurantAccounts($query)
