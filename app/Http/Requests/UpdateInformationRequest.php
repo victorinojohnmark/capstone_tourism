@@ -27,7 +27,10 @@ class UpdateInformationRequest extends FormRequest
             'contact_person' => ['required'],
             'email_address' => ['required', 'email'],
             'address' => ['required'],
-            'map_url' => ['required']
+            'map_url' => ['required'],
+            'facebook_url' => ['nullable', 'url'],
+            'instagram_url' => ['nullable', 'url'],
+            'twitter_url' => ['nullable', 'url'],
         ];
     }
 

@@ -12,7 +12,7 @@
                 <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                     Account On Hold
                 </h1>
-                <p>Your account has been temporarily placed on hold. Please contact Ternate Tourism to settle the outstanding payment.</p>
+                <p>We require action from you. Please contact Ternate Tourism to activate your account or settle any outstanding payments if you have received a pending payment notice.</p>
             </div>
         </div>
     </div>

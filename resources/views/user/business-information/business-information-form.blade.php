@@ -24,6 +24,21 @@
     <input value="{{ old('map_url', $information->map_url ?? null) }}" type="text" id="map_url" name="map_url" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
 </div>
 
+<div class="mb-5">
+    <label for="facebook_url" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Facebook URL</label>
+    <input value="{{ old('facebook_url', $information->facebook_url ?? null) }}" type="text" id="facebook_url" name="facebook_url" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+</div>
+
+<div class="mb-5">
+    <label for="instagram_url" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Instagram URL</label>
+    <input value="{{ old('instagram_url', $information->instagram_url ?? null) }}" type="text" id="instagram_url" name="instagram_url" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+</div>
+
+<div class="mb-5">
+    <label for="twitter_url" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Twitter URL</label>
+    <input value="{{ old('twitter_url', $information->twitter_url ?? null) }}" type="text" id="twitter_url" name="twitter_url" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+</div>
+
 <div class="mb-12">
     <label for="about_us_content">Content</label>
     <textarea name="about_us_content" class="tinymce-editor" id="about_us_content" cols="30" rows="10">{{ old('about_us_content', $information->about_us_content ?? null) }}</textarea>

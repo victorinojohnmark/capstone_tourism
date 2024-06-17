@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -78,8 +79,26 @@ class RegisterController extends Controller
             'contact_no' => $data['contact_no'],
             'password' => Hash::make($data['password']),
             'type' => $data['type'],
+            'is_on_hold' => $data['type'] == 'Tourist' ? false : true,
             'business_type' => $data['type'] == 'Tourist' ? null : $data['business_type'] ?? null,
             'business_name' => $data['type'] == 'Tourist' ? null : $data['business_name'] ?? null,
         ]);
     }
+
+    // public function register(Request $request)
+    // {
+    //     $validator = $this->validator($request->all());
+
+    //     if ($validator->fails()) {
+    //         return redirect()->back()
+    //             ->withErrors($validator)
+    //             ->withInput();
+    //     }
+
+    //     $user = $this->create($request->all());
+
+    //     // You can add custom logic here after successful registration if needed
+
+    //     return redirect($this->redirectPath());
+    // }
 }

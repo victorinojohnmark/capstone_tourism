@@ -23,7 +23,10 @@ class User extends Authenticatable implements MustVerifyEmail
         'type',
         'business_type',
         'business_name',
-        'is_on_hold'
+        'is_on_hold',
+        'facebook_url',
+        'instagram_url',
+        'twitter_url',
     ];
 
     protected $hidden = [

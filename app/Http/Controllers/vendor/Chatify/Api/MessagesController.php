@@ -276,8 +276,10 @@ class MessagesController extends Controller
     {
         $input = trim(filter_var($request['input']));
         $records = User::where('id','!=',Auth::user()->id)
+                    ->vendor()
+                    ->verified()
+                    ->notOnHold()
                     ->where('business_name', 'LIKE', "%{$input}%")
-                    ->where('type', '=','Vendor')
                     ->paginate($request->per_page ?? $this->perPage);
 
         foreach ($records->items() as $index => $record) {

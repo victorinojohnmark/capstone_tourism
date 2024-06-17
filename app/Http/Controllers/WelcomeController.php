@@ -10,9 +10,9 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-        $beaches = User::verified()->beachAccounts()->get();
-        $restaurants = User::verified()->restaurantAccounts()->get();
-        $products = User::verified()->productAccounts()->get();
+        $beaches = User::verified()->notOnHold()->beachAccounts()->get();
+        $restaurants = User::verified()->notOnHold()->restaurantAccounts()->get();
+        $products = User::verified()->notOnHold()->productAccounts()->get();
 
         // dd(count($beaches));
         
