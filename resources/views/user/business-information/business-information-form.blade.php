@@ -6,7 +6,7 @@
     </div>
     <div class="mb-5">
         <label for="contact_no" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contact No</label>
-        <input value="{{ old('contact_no', $information->contact_no ?? null) }}" type="text" id="contact_no" name="contact_no" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+        <input value="{{ old('contact_no', $information->contact_no ?? null) }}" type="text" oninput="restrictToNumbers(this)" id="contact_no" name="contact_no" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
     </div>
     <div class="mb-5">
         <label for="email_address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email Address</label>

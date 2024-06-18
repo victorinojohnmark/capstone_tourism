@@ -142,9 +142,8 @@
             </main>
         </div>
     </div>
+    <script src="{{ asset('js/custom.js') }}"></script>
     @yield('scripts')
-
-
     @auth
     <script>
         window.authUser = @json(auth()->user());

@@ -99,6 +99,7 @@
             </div>
         </div>
     </footer>
+    <script src="{{ asset('js/custom.js') }}"></script>
     @yield('scripts')
     @yield('css')
     <script>
