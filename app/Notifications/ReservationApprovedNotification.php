@@ -45,7 +45,7 @@ class ReservationApprovedNotification extends Notification
                     ->line('Tour Type: ' . $this->reservation->tour_type)
                     ->line('Check In: ' . Carbon::parse($this->reservation->check_in)->format('F j, Y'))
                     ->line('Check Out: ' . Carbon::parse($this->reservation->check_out)->format('F j, Y'))
-                    ->action('View Reservation', url('/user/reservations/' . $this->reservation->id));
+                    ->action('View Reservation', url('/user/reservations'));
     }
 
     /**
