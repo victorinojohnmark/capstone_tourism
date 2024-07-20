@@ -84,7 +84,7 @@
                 <booking-calendar />
               @endif
             @else
-              <p>Please <a href="/login" class=" text-blue-700 underline" rel="noopener noreferrer">login</a> to access this reservation feature</p>
+              <p class="pl-5">Please <a href="/login" class=" text-blue-700 underline" rel="noopener noreferrer">login</a> to access the reservation feature</p>
             @endif
           </div>
         </section>

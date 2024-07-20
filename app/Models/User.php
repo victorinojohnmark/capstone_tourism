@@ -146,4 +146,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $query->where('type', 'Vendor')->where('business_type', 'Products and Delicacies');
     }
+
+    public function rooms()
+    {
+        return $this->hasMany(Room::class, 'vendor_id');
+    }
 }

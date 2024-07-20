@@ -8,7 +8,7 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AccountController;
-
+use App\Http\Controllers\RoomController;
 use App\Http\Controllers\ReservationController;
 
 /*
@@ -63,9 +63,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
                 Route::get('/reservations', [ReservationController::class, 'index'])->name('user.client-reservation.index');
                 Route::delete('/reservations/{reservation}', [ReservationController::class,'destroy'])->name('reservation.destroy');
                 Route::post('/reservations/{reservation}/approve', [ReservationController::class,'approve'])->name('reservation.approve');
-                // Route::get('/reservations/create', [ReservationController::class, 'create'])->name('user.reservation.create');
-                // Route::post('/reservations/create', [ReservationController::class,'store'])->name('user.reservation.store');
-                // Route::get
+                
+                Route::get('/rooms', [RoomController::class, 'index'])->name('vendor.rooms.index');
             });
         });
     });
