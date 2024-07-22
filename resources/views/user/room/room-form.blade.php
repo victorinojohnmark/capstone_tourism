@@ -20,35 +20,38 @@
             <div class="p-4 md:p-5 flex flex-col gap-y-3">
                 
                 {{-- room form --}}
-                <form action="#" method="post" enctype="multipart/form-data">
+                <form action="{{ $room->id ? route('vendor.rooms.update', ['room' => $room->id]) : route('vendor.rooms.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
+                    @if ($room->id)
+                        <input type="hidden" name="_method" value="PUT">
+                    @endif
                     <div class="mb-6">
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                        <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Room Name" required>
+                        <label for="name{{ $room->id ?? null }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                        <input type="text" name="name" id="name{{ $room->id ?? null }}" value="{{ $room->name ?? null }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Room Name" required>
                         @error('name')
                         <p class="text-red-500 text-xs italic">{{ $message }}</p>
                         @enderror
                     </div>
 
                     <div class="mt-2">
-                        <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-                        <textarea name="description" id="description" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Description" required></textarea>
+                        <label for="description{{ $room->id ?? null }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
+                        <textarea name="description" id="description{{ $room->id ?? null }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Description" required>{{ $room->description ?? null }}</textarea>
                         @error('description')
                         <p class="text-red-500 text-xs italic">{{ $message }}</p>
                         @enderror
                     </div>
 
                     <div class="mt-2">
-                        <label for="capacity" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Capacity</label>
-                        <input type="number" name="capacity" id="capacity" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Capacity" required>
+                        <label for="capacity{{ $room->id ?? null }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Capacity</label>
+                        <input type="number" name="capacity" id="capacity{{ $room->id ?? null }}" value="{{ $room->capacity ?? null }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Capacity" required>
                         @error('capacity')
                         <p class="text-red-500 text-xs italic">{{ $message }}</p>
                         @enderror
                     </div>
 
                     <div class="mt-2 mb-6">
-                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Image file</label>
-                        <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file">
+                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="image{{ $room->id ?? null }}">Image file</label>
+                        <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="image{{ $room->id ?? null }}" name="image" type="file">
                         @error('image')
                         <p class="text-red-500 text-xs italic">{{ $message }}</p>
                         @enderror

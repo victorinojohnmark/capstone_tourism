@@ -65,6 +65,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
                 Route::post('/reservations/{reservation}/approve', [ReservationController::class,'approve'])->name('reservation.approve');
                 
                 Route::get('/rooms', [RoomController::class, 'index'])->name('vendor.rooms.index');
+                Route::post('/rooms', [RoomController::class, 'store'])->name('vendor.rooms.store');
+                Route::put('/rooms/{room}', [RoomController::class, 'update'])->name('vendor.rooms.update');
             });
         });
     });
