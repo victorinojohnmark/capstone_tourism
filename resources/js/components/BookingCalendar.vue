@@ -8,7 +8,14 @@
 
         </div>
         <form @submit.prevent="submitReservation">
-          <VDatePicker v-model.range="reservation.range" :attributes="attributes" :min-date='new Date()' mode="date" expanded />
+          <div class=" grid grid-cols-3 gap-2">
+            <div class="col-span-1">
+              
+            </div>
+            <div class=" col-span-2">
+              <VDatePicker v-model.range="reservation.range" :attributes="attributes" :min-date='new Date()' mode="date" expanded />
+            </div>
+          </div>
           <div class="flex gap-3 py-3">
 
             <div id="typeSelector" class="w-full md:w-1/3">
