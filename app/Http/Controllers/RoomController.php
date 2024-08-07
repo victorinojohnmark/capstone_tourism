@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Room;
+use App\Models\User;
 
 class RoomController extends Controller
 {
@@ -15,9 +16,9 @@ class RoomController extends Controller
         ]);
     }
 
-    public function getRooms(Request $request)
+    public function getRooms(Request $request, $vendor_id)
     {
-        $rooms = Room::where('vendor_id', $request->vendor_id)->get();
+        $rooms = Room::where('vendor_id', $vendor_id)->get();
 
         return response()->json($rooms);
     }

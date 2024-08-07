@@ -39,7 +39,12 @@
                 Beach & Resort
             </th>
             @endif
-            
+            <th scope="col" class="px-6 py-3">
+                Room
+            </th>
+            <th scope="col" class="px-6 py-3">
+                Guests
+            </th>
             <th scope="col" class="px-6 py-3">
                 Type
             </th>
@@ -75,6 +80,14 @@
                     {{ $reservation->vendor->name }}
                 </td>
             @endif
+            <td class="px-6 !py-4">
+                {{ $reservation->room->name . ' (' . $reservation->room->capacity . ') pax' }}
+            </td>
+
+            <td class="px-6 !py-4">
+                {{ $reservation->guest_count . ' pax' }}
+            </td>
+
             <td class="px-6 !py-4">
                 {{ $reservation->tour_type }}
             </td>

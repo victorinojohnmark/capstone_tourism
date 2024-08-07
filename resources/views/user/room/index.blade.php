@@ -19,7 +19,7 @@
     <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <a href="#" data-modal-target="room-modal{{ $room->id ?? null }}" data-modal-toggle="room-modal{{ $room->id ?? null }}">
             <div class="relative overflow-hidden">
-                <img class="rounded-t-lg object-cover aspect-video" src="/storage/rooms/{{ $room->image }}" alt="" />
+                <img class="rounded-t-lg object-cover aspect-video w-96" src="/storage/rooms/{{ $room->image }}" alt="" />
                 <span class="z-10 absolute top-0 right-0 px-3 py-1 text-xs font-bold leading-none text-white bg-green-500 rounded-bl-lg rounded-tr-lg">{{ $room->capacity }} pax</span>
             </div>
         </a>
