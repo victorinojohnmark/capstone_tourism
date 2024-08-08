@@ -30,7 +30,7 @@ class StoreReservationRequest extends FormRequest
 
         // Add the custom rule conditionally if the required fields are present
         if ($this->input('room_id') && $this->input('check_in') && $this->input('check_out')) {
-            $rules['date_range'] = [new DateRangeAvailable($this->input('room_id'), $this->input('check_in'), $this->input('check_out'))];
+            $rules['check_in'] = [new DateRangeAvailable($this->input('room_id'), $this->input('check_in'), $this->input('check_out'))];
         }
 
         return $rules;

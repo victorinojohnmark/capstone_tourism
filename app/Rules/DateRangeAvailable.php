@@ -34,6 +34,8 @@ class DateRangeAvailable implements ValidationRule
             })
             ->exists();
 
+        
+
         if ($hasOverlap) {
             $fail('The selected date range is not available for the selected room.');
         }
