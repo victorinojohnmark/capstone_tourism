@@ -79,7 +79,7 @@ import { format } from 'date-fns'
 
 const systemStore = useSystemStore()
 
-const today = new Date().toISOString().split('T')[0];
+const today = new Date();
 const vendor_id = ref(null)
 const model = 'reservation'
 const successReservation = ref(false)
@@ -136,7 +136,7 @@ const resetValues = async () => {
   // reservation.value.range.start = null
   // reservation.value.range.end = null
   
-  reservation.value.range = { start: new Date(), end: new Date() }
+  reservation.value.range = { start: new new Date(), end: new new Date() }
 
   reservation.value.vendor_id = vendor_id.value
   reservation.value.room_id = null
@@ -158,10 +158,10 @@ const submitReservation = async () => {
         const formattedReservation = {
             ...reservation.value,
             guest_count: reservation.value.adult_count + reservation.value.child_count,
-            // range: {
-            //     start: format(reservation.value.range.start, 'yyyy-MM-dd HH:mm:ss'),
-            //     end: format(reservation.value.range.end, 'yyyy-MM-dd HH:mm:ss')
-            // },
+            range: {
+                start: format(reservation.value.range.start, 'yyyy-MM-dd'),
+                end: format(reservation.value.range.end, 'yyyy-MM-dd')
+            },
 
         }
         const response = await window.axios.post('/api/reservations', formattedReservation)

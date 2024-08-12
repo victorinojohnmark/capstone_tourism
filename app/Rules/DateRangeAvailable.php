@@ -4,40 +4,46 @@ namespace App\Rules;
 
 use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
+use Illuminate\Support\Facades\DB;
 use App\Models\Reservation;
 
 class DateRangeAvailable implements ValidationRule
 {
-    protected $room_id;
-    protected $check_in;
-    protected $check_out;
+    protected $roomId;
+    protected $checkIn;
+    protected $checkOut;
+    protected $tourType;
 
-    public function __construct($room_id, $check_in, $check_out)
+    public function __construct($roomId, $checkIn, $checkOut, $tourType)
     {
-        $this->room_id = $room_id;
-        $this->check_in = $check_in;
-        $this->check_out = $check_out;
+        $this->roomId = $roomId;
+        $this->checkIn = $checkIn;
+        $this->checkOut = $checkOut;
+        $this->tourType = $tourType;
     }
 
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        $hasOverlap = Reservation::where('room_id', $this->room_id)
-            ->where(function($query) {
-                $query->where(function($query) {
-                    $query->whereBetween('check_in', [$this->check_in, $this->check_out])
-                          ->orWhereBetween('check_out', [$this->check_in, $this->check_out]);
-                })
-                ->orWhere(function($query) {
-                    $query->where('check_in', '<=', $this->check_in)
-                          ->where('check_out', '>=', $this->check_out);
+        // dd($this->checkIn, $this->checkOut);
+
+        // Query to check for overlapping reservations based on the datetime range
+        $hasOverlap = Reservation::where('room_id', $this->roomId)
+            ->where(function ($query) {
+                $query->where(function ($query) {
+                    // Overlapping scenarios:
+                    $query->whereBetween('check_in', [$this->checkIn, $this->checkOut])
+                          ->orWhereBetween('check_out', [$this->checkIn, $this->checkOut])
+                          ->orWhere(function ($query) {
+                              // Check for an existing reservation that fully encompasses the new one
+                              $query->where('check_in', '<=', $this->checkIn)
+                                    ->where('check_out', '>=', $this->checkOut);
+                          });
                 });
             })
             ->exists();
 
-        
-
         if ($hasOverlap) {
-            $fail('The selected date range is not available for the selected room.');
+            $fail('The selected date range is not available for the chosen room.');
         }
     }
 }
