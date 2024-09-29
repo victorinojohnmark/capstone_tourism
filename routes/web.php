@@ -24,7 +24,9 @@ use App\Http\Controllers\ReservationController;
 
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 Route::get('/vendors', [VendorController::class, 'index'])->name('vendor-list');
+Route::get('/vendors/search', [VendorController::class, 'search'])->name('vendor-search');
 Route::get('/vendors/{vendor}', [VendorController::class, 'show'])->name('vendor-show');
+
 
 
 Route::get('/accountonhold', function() {

@@ -30,4 +30,16 @@ class VendorController extends Controller
             'user' => $vendor
         ]);
     }
+
+    public function search(Request $request)
+    {
+        $users = User::notOnHold()->vendor()
+        ->where(function($query) use($request){
+            if($request->query('key')) {
+                $query->where('business_name', 'like', '%'.$request->query('key').'%');
+            }
+        })->get();
+
+        return response()->json($users);
+    }
 }
