@@ -13,6 +13,8 @@ class ReservationController extends Controller
     public function index(Request $request)
     {
         $reservations = auth()->user()->is_beach_resort_owner ? auth()->user()->clientReservations : auth()->user()->reservations;
+
+        $reservations = $reservations->sortByDesc('created_at');
         
         return view('reservation.reservation-list', [
             'reservations' => $reservations
